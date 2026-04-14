@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nume Restaurant - Pagina oficială</title>
+    <style>
+        /* RESET SIMPLU */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #111;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* CONTAINER GENERAL */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* HEADER & NAVBAR */
+        header {
+            background: rgba(0, 0, 0, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f5c451;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #f5c451;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(
+                        rgba(0, 0, 0, 0.6),
+                        rgba(0, 0, 0, 0.8)
+                      ),
+                      url("POZA-HERO-RESTAURANT.jpg") center/cover no-repeat;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 550px;
+            padding: 4rem 0;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #f5c451;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 0.8rem 1.6rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #f5c451;
+            color: #111;
+            border-color: #f5c451;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #f5c451;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #f5c451;
+            border-color: #f5c451;
+        }
+
+        .btn-secondary:hover {
+            background: #f5c451;
+            color: #111;
+        }
+
+        /* SECTIUNI GENERALE */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-of-type(even) {
+            background: #181818;
+        }
+
+        section:nth-of-type(odd) {
+            background: #111;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #bbb;
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .about-box {
+            background: #1f1f1f;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .about-box span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f5c451;
+        }
+
+        .about-box small {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            background: #222;
+            border: 1px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* MENIU – CARDURI PREPARATE */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .dish-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dish-image-placeholder {
+            background: #222;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.8rem;
+            border-bottom: 1px dashed #444;
+        }
+
+        .dish-content {
+            padding: 1rem;
+        }
+
+        .dish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .dish-name {
+            font-weight: bold;
+        }
+
+        .dish-price {
+            color: #f5c451;
+            font-weight: bold;
+        }
+
+        .dish-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* GALERIE FOTO – DOAR PLACEHOLDER-E, INLOCUIESTI CU IMAGINI REALE */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .gallery-placeholder {
+            height: 180px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* TESTIMONIALE */
+        .testimonials-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "“";
+            position: absolute;
+            font-size: 3rem;
+            color: #333;
+            top: 10px;
+            left: 15px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        .testimonial-meta {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* CONTACT + FOOTER */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.6rem;
+            color: #ddd;
+        }
+
+        .contact-info strong {
+            color: #f5c451;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.7rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #1b1b1b;
+            color: #f5f5f5;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            border: none;
+        }
+
+        .map-placeholder {
+            margin-top: 1rem;
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            background: #222;
+            border: 1px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 0.7rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            background: #000;
+            font-size: 0.85rem;
+            color: #888;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .about,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.7rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER + NAV -->
+    <header>
+        <div class="container nav">
+            <div class="logo">Nume Restaurant</div>
+            <nav class="nav-links">
+                <a href="#acasa">Acasă</a>
+                <a href="#despre">Despre</a>
+                <a href="#meniu">Meniu</a>
+                <a href="#galerie">Galerie</a>
+                <a href="#testimoniale">Testimoniale</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="acasa" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Experiență culinară autentică</p>
+                <h1 class="hero-title">Bun venit la Nume Restaurant</h1>
+                <p class="hero-text">
+                    Aici poți scrie un scurt text de prezentare: tipul de bucătărie, atmosfera, 
+                    ce vă face speciali (ingrediente proaspete, rețete de familie, view, etc.).
+                </p>
+                <div class="btn-group">
+                    <a href="#meniu" class="btn-primary">Vezi meniul</a>
+                    <a href="#contact" class="btn-secondary">Rezervă o masă</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESPRE NOI -->
+    <section id="despre">
+        <div class="container">
+            <h2 class="section-title">Despre noi</h2>
+            <p class="section-subtitle">
+                Scrie aici povestea restaurantului tău, valorile și promisiunea pentru clienți.
+            </p>
+
+            <div class="about">
+                <div class="about-text">
+                    <h3>Povestea Nume Restaurant</h3>
+                    <p>
+                        Aici poți adăuga un text mai lung despre cum a început restaurantul, 
+                        inspirația din spate, tipul de bucătărie, rețetele semnătură, 
+                        echipa de bucătari și experiența pe care doriți să o oferiți oaspeților.
+                    </p>
+                    <p>
+                        Poți menționa, de exemplu, folosirea ingredientelor locale, 
+                        colaborări cu producători din zonă sau faptul că totul este 
+                        gătit pe loc, în fiecare zi.
+                    </p>
+
+                    <div class="about-highlights">
+                        <div class="about-box">
+                            <span>20+</span>
+                            <small>Preparate în meniu</small>
+                        </div>
+                        <div class="about-box">
+                            <span>5⭐</span>
+                            <small>Recenzii clienți</small>
+                        </div>
+                        <div class="about-box">
+                            <span>2018</span>
+                            <small>Deschis din</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SPATIU PENTRU POZA CU INTERIOR / ECHIPA / PLATING -->
+                <div class="about-image-placeholder">
+                    Aici poți pune o imagine mare cu interiorul restaurantului, echipa 
+                    sau un plating reprezentativ. <br>
+                    Înlocuiește acest div cu: <br>
+                    &lt;img src="nume-poza.jpg" alt="Despre restaurant"&gt;
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENIU – PREPARATE PRINCIPALE -->
+    <section id="meniu">
+        <div class="container">
+            <h2 class="section-title">Meniul nostru</h2>
+            <p class="section-subtitle">
+                Alege din selecția noastră de preparate pregătite cu grijă, din ingrediente proaspete.
+            </p>
+
+            <div class="menu-grid">
+                <!-- CARD PREPARAT 1 -->
+                <div class="dish-card">
+                    <!-- SPATIU PENTRU POZA PREPARAT -->
+                    <div class="dish-image-placeholder">
+                        Poza preparatului 1 (înlocuiește cu &lt;img src="preparat1.jpg"&gt;)
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <div class="dish-name">Nume Preparat 1</div>
+                            <div class="dish-price">45 lei</div>
+                        </div>
+                        <p class="dish-desc">
+                            O scurtă descriere a preparatului: ingrediente principale, gust, 
+                            mod de servire.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CARD PREPARAT 2 -->
+                <div class="dish-card">
+                    <div class="dish-image-placeholder">
+                        Poza preparatului 2 (înlocuiește cu &lt;img src="preparat2.jpg"&gt;)
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <div class="dish-name">Nume Preparat 2</div>
+                            <div class="dish-price">39 lei</div>
+                        </div>
+                        <p class="dish-desc">
+                            Adaugă aici descrierea preparatului, ce îl face special și de ce 
+                            clienții îl iubesc.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CARD PREPARAT 3 -->
+                <div class="dish-card">
+                    <div class="dish-image-placeholder">
+                        Poza preparatului 3 (înlocuiește cu &lt;img src="preparat3.jpg"&gt;)
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <div class="dish-name">Nume Preparat 3</div>
+                            <div class="dish-price">35 lei</div>
+                        </div>
+                        <p class="dish-desc">
+                            O scurtă descriere despre gust, textură și pentru cine este 
+                            recomandat acest preparat.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CARD PREPARAT 4 -->
+                <div class="dish-card">
+                    <div class="dish-image-placeholder">
+                        Poza preparatului 4 (înlocuiește cu &lt;img src="preparat4.jpg"&gt;)
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <div class="dish-name">Nume Preparat 4</div>
+                            <div class="dish-price">42 lei</div>
+                        </div>
+                        <p class="dish-desc">
+                            Ideal pentru a evidenția un preparat vedetă din meniu sau o 
+                            specialitate a casei.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE FOTO – MANCARE / INTERIOR / EVENIMENTE -->
+    <section id="galerie">
+        <div class="container">
+            <h2 class="section-title">Galerie foto</h2>
+            <p class="section-subtitle">
+                Aici poți prezenta cele mai reușite fotografii cu preparatele, interiorul și evenimentele.
+            </p>
+
+            <div class="gallery-grid">
+                <!-- Inlocuiești fiecare .gallery-placeholder cu <img src="..."> -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        Poza 1 – farfurie cu preparat
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        Poza 2 – interior / bar / terasă
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        Poza 3 – detaliu plating
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        Poza 4 – eveniment / echipa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALE -->
+    <section id="testimoniale">
+        <div class="container">
+            <h2 class="section-title">Ce spun clienții noștri</h2>
+            <p class="section-subtitle">
+                Adaugă aici testimoniale reale, recenzii și feedback de la oaspeți.
+            </p>
+
+            <div class="testimonials-wrapper">
+                <!-- TESTIMONIAL 1 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        „Mâncarea este absolut delicioasă, porții generoase și un personal 
+                        foarte prietenos. Cu siguranță vom reveni!”
+                    </p>
+                    <div class="testimonial-author">Nume Client 1</div>
+                    <div class="testimonial-meta">Recenzie Google Maps</div>
+                </div>
+
+                <!-- TESTIMONIAL 2 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        „Atmosfera este superbă, perfectă atât pentru cine romantice, cât și 
+                        pentru ieșiri cu prietenii. Recomand cu drag.”
+                    </p>
+                    <div class="testimonial-author">Nume Client 2</div>
+                    <div class="testimonial-meta">Recenzie Facebook</div>
+                </div>
+
+                <!-- TESTIMONIAL 3 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        „Unul dintre cele mai bune restaurante din oraș. Raport calitate-preț 
+                        excelent și preparate mereu proaspete.”
+                    </p>
+                    <div class="testimonial-author">Nume Client 3</div>
+                    <div class="testimonial-meta">Recenzie TripAdvisor</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Rezervări</h2>
+            <p class="section-subtitle">
+                Completează formularul sau sună-ne pentru a-ți rezerva masa.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><strong>Adresă:</strong> Strada Exemplu nr. 10, Oraș, România</p>
+                    <p><strong>Telefon:</strong> <a href="tel:+40123456789">+40 123 456 789</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:contact@nume-restaurant.ro">contact@nume-restaurant.ro</a></p>
+                    <p><strong>Program:</strong> Luni – Duminică: 12:00 – 23:00</p>
+
+                    <!-- SPATIU PENTRU HARTA (MAP EMBED) -->
+                    <div class="map-placeholder">
+                        Aici poți integra o hartă Google Maps (iframe) cu locația exactă 
+                        a restaurantului.
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <input type="text" placeholder="Nume complet">
+                    <input type="email" placeholder="Adresă de email">
+                    <input type="tel" placeholder="Număr de telefon">
+                    <textarea placeholder="Mesajul tău / Detalii rezervare"></textarea>
+                    <button class="btn-primary">Trimite mesajul</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; <span id="year"></span> Nume Restaurant. Toate drepturile rezervate.
+    </footer>
+
+    <script>
+        // setează anul curent în footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
