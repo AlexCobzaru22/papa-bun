@@ -629,42 +629,85 @@
     </section>
 
     <!-- GALERIE FOTO – MANCARE / INTERIOR / EVENIMENTE -->
-    <section id="galerie">
-        <div class="container">
-            <h2 class="section-title">Galerie foto</h2>
-            <p class="section-subtitle">
-                Aici poți prezenta cele mai reușite fotografii cu preparatele, interiorul și evenimentele.
-            </p>
+   <!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie foto</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-            <div class="gallery-grid">
-                <!-- Inlocuiești fiecare .gallery-placeholder cu <img src="..."> -->
-                <div class="gallery-item">
-                    <img src="images/platoupb4.jpg" alt="Logo Cofetăria Paradisul Dulce" style="width:180px; height:auto;">
-                        Poza 1 – farfurie cu preparat
-                    </div>
-                </div>
+        h1 {
+            margin-top: 30px;
+        }
 
-                <div class="gallery-item">
-                    <img src="images/salapb1.jpg" alt="Logo Cofetăria Paradisul Dulce" style="width:180px; height:auto;">
-                        Poza 2 – interior / bar / terasă
-                    </div>
-                </div>
+        .galerie {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
 
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        Poza 3 – detaliu plating
-                    </div>
-                </div>
+        .poza {
+            background-color: #1c1c1c;
+            border: 2px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-                <div class="gallery-item">
-                    <img src="images/salapb2.jpg" alt="Logo Cofetăria Paradisul Dulce">
-                        Poza 4 – eveniment / echipa
-                    </div>
-                </div>
-            </div>
+        .poza:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .poza img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .descriere {
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Galerie foto</h1>
+
+    <div class="galerie">
+
+        <div class="poza">
+            <img src="images/platoupb1.jpg" alt="Preparat 1">
+            <div class="descriere">Poza 1 – farfurie cu preparat</div>
         </div>
-    </section>
 
+        <div class="poza">
+            <img src="images/platoupb2.jpg" alt="Preparat 1">
+            <div class="descriere">Poza 2 – desert</div>
+        </div>
+
+        <div class="poza">
+            <img src="images/salapb1.jpg" alt="Preparat 1">
+            <div class="descriere">Poza 3 – interior restaurant</div>
+        </div>
+
+        <div class="poza">
+            <img src="images/salapb2.jpg" alt="Preparat 1">
+            <div class="descriere">Poza 4 – eveniment</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
     <!-- TESTIMONIALE -->
     <section id="testimoniale">
         <div class="container">
